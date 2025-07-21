@@ -1,10 +1,10 @@
-def filter_arr1(arr: list, element: int) -> list:
+def remove_in_place(numbers: list, to_remove: int) -> list:
     """
     Удаляет все вхождения заданного элемента из массива in-place.
 
     Args:
-        arr (list): Исходный массив, который будет изменен.
-        element (int): Элемент, который необходимо удалить.
+        numbers (list): Исходный массив чисел, который будет изменен.
+        to_remove (int): Элемент, который необходимо удалить.
 
     Returns:
         list: Измененный массив (исходный массив с удаленными элементами).
@@ -13,23 +13,23 @@ def filter_arr1(arr: list, element: int) -> list:
         Временная сложность: O(n)
         Пространственная сложность: O(1)
     """
-    idx = 0
-    for value in arr:
-        if value != element:
-            arr[idx] = value
-            idx += 1
+    write_index = 0
+    for number in numbers:
+        if number != to_remove:
+            numbers[write_index] = number
+            write_index += 1
 
-    del arr[idx:]
-    return arr
+    del numbers[write_index:]
+    return numbers
 
 
-def filter_arr2(arr: list, element: int) -> list:
+def create_filtered_copy(numbers: list, to_remove: int) -> list:
     """
     Создает новый массив без элементов, равных заданному.
 
     Args:
-        arr (list): Исходный массив.
-        element (int): Элемент, который необходимо исключить.
+        numbers (list): Исходный массив чисел.
+        to_remove (int): Элемент, который необходимо исключить.
 
     Returns:
         list: Новый массив без указанного элемента.
@@ -38,13 +38,13 @@ def filter_arr2(arr: list, element: int) -> list:
         Временная сложность: O(n)
         Пространственная сложность: O(n)
     """
-    return [x for x in arr if x != element]
+    return [number for number in numbers if number != to_remove]
 
 
 if __name__ == "__main__":
     n = int(input())
-    arr = list(map(int, input().split()))
-    element = int(input())
+    numbers = list(map(int, input().split()))
+    to_remove = int(input())
 
-    filter_arr1(arr, element)
-    print(" ".join(str(value) for value in arr))
+    remove_in_place(numbers, to_remove)
+    print(" ".join(map(str, numbers)))
