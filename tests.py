@@ -3,7 +3,7 @@ from cleaning_up_the_experiment import remove_in_place, create_filtered_copy
 
 def test(func):
     # Тест из условия задачи
-    assert func([1, 2, -1, 4, 5, -1, 6]) == [1, 2, 4, 5, 6]
+    assert func([1, 2, -1, 4, 5, -1, 6], -1) == [1, 2, 4, 5, 6]
     # Тест удаления всех элементов
     assert func([1, 1, 1], 1) == []
     # Тест отсутствия элемента
